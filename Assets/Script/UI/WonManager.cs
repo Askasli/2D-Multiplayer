@@ -7,27 +7,23 @@ using TMPro;
 public class WonManager : MonoBehaviour
 {
     public TMP_Text coolDownMenu;
-    private float coolDownTo;
+    private float coolDownTo = 10;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        coolDownTo = 10;
+        StartCoroutine(Countdown());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Countdown()
     {
-        coolDownMenu.SetText(coolDownTo.ToString("0"));
-
-        if (coolDownTo > 0)
+        while (coolDownTo > 0)
         {
             coolDownTo -= Time.deltaTime;
+            coolDownMenu.text = coolDownTo.ToString("0");
+            yield return null;
         }
-        else
-        {
-            RoomManager.instance.DisconnectPlayer();
-        }
+
+        RoomManager.instance.DisconnectPlayer();
     }
 
     public void ToMenu()

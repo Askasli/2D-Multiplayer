@@ -25,17 +25,14 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
     {
         player = _player;
         text.text = _player.NickName;
-     //   text.text = PlayerPrefs.GetString("USERNAME");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-       
         if(player == otherPlayer)
         {
             Destroy(gameObject);
         }
-
     }
 
     public override void OnLeftRoom()

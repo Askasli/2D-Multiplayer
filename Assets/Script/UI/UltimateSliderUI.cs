@@ -20,16 +20,16 @@ public class UltimateSliderUI : MonoBehaviour
 
     private void Start()
     {
-        _ultimateTimer.OnTimerUpdated += UpdateSlider;
+        _ultimateTimer.OnTimerUpdated += UpdateSlider;  // Register the UpdateSlider method/
         _ultimateTimer.StartUltimateTimer(timeDuration);
     }
 
     private void OnDestroy()
     {
-        _ultimateTimer.OnTimerUpdated -= UpdateSlider;
+        _ultimateTimer.OnTimerUpdated -= UpdateSlider;   //  Unregister to avoid memory leaks.
     }
     
-    private void UpdateSlider(float value)
+    private void UpdateSlider(float value)    // Update the fill amount of the ultimate ability timer UI.
     {
         ultImage.fillAmount = value;
         float alpha = (_ultimateTimer.GetTimeRemaining() < 1) ? Mathf.Max(0, showPoint.color.a - 1) : Mathf.Min(1, showPoint.color.a + 1);

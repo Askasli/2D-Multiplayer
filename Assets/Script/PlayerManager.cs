@@ -31,11 +31,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     
     [SerializeField] private Animator anim_body;
     [SerializeField] private Animator anim_hands;
-    
     [SerializeField] private new Collider2D collider;
 
     private PhotonView pv;
     private Rigidbody2D rigi;
+    
+    private const string PlayerTag = "Player";
+    private const string EnemyTag = "Enemy";
+    private const string FirstFloorTag = "FirstFloor";
+    private const string SecondFloorTag = "SecondFloor";
+    private const string ThirdFloorTag = "ThirdFloor";
+    private const string Layer1 = "Layer 1";
+    private const string Layer2 = "Layer 2";
+    private const string Layer3 = "Layer 3";
+    
 
     [Inject]
     public void Construct(ICharacterAnimatorRotation animatorRotation, IMoveCharacter moveCharacter, IDash dash, IMeleeWeaponAttack meleeWeaponAttack, 
@@ -64,11 +73,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (!pv.IsMine)
         { 
             rigi.isKinematic = true;
-            gameObject.tag = "Enemy";
+            gameObject.tag = PlayerTag;
         }
         else
         {
-            gameObject.tag = "Player";
+            gameObject.tag = EnemyTag;
         }
        
     }
@@ -123,17 +132,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         string layerName = null;
 
-        if (collisionObject.CompareTag("FirstFloor"))
+        if (collisionObject.CompareTag(FirstFloorTag))
         {
-            layerName = "Layer 1";
+            layerName = Layer1;
         }
-        else if (collisionObject.CompareTag("SecondFloor"))
+        else if (collisionObject.CompareTag(SecondFloorTag))
         {
-            layerName = "Layer 2";
+            layerName = Layer2;
         }
-        else if (collisionObject.CompareTag("ThirdFloor"))
+        else if (collisionObject.CompareTag(ThirdFloorTag))
         {
-            layerName = "Layer 3";
+            layerName = Layer3;
         }
 
         return layerName;
