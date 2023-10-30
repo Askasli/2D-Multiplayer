@@ -14,8 +14,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private IMoveCharacter _moveCharacter;
     private ICharacterAnimatorRotation _animatorRotation;
     private ILayerManager _layerManager;
-    public SpriteRenderer[] playerSpriteRenderers;
-   
+    
+    
+    [SerializeField] private  SpriteRenderer[] playerSpriteRenderers;
     [SerializeField] private GameObject[] dashFX;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private GameObject ultimateArrowPrefab;
