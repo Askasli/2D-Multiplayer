@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c7274eff-7874-4ba3-8545-9e0cca99ff95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Delete.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Common.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Common/DontDestory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Common/DontDestory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Data/GameMode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Data/GameMode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonChatController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonChatController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonChatFriendController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonChatFriendController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonConnector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonConnector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonFriendController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonFriendController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonGameController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonGameController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonRoomController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonRoomController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonStatus.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonTeamController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Photon/PhotonTeamController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Playfab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Playfab/PlayfabFriendController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Playfab/PlayfabFriendController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Playfab/PlayfabLogin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Playfab/PlayfabLogin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Scene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Scene/SceneController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/Scene/SceneController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIAddFriend.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIAddFriend.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayFriends.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayFriends.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayInvites.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayInvites.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayRoom.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayRoom.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayTeam.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIDisplayTeam.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIExitButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIExitButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIFriend.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIFriend.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIGameMode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIGameMode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIInvite.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIInvite.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIPlayerSelection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIPlayerSelection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UITeam.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UITeam.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIToggleButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Net 2.0/UI/UIToggleButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UI/LobbyNameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UI/LobbyNameManager.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/f712b1dc50b4468388b9c5f95d0d0eaf159e00/d1/4f788da2/02000250.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f712b1dc50b4468388b9c5f95d0d0eaf159e00/64/43e7e473/SpriteRenderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f712b1dc50b4468388b9c5f95d0d0eaf159e00/e6/8091955c/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f712b1dc50b4468388b9c5f95d0d0eaf159e00/fa/524af97c/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Arrow/ArrowMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Arrow/ArrowVisual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Animator/AnimatorParameters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/CombatSystem/WeaponShootManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/DataSynchronizer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/FlipSprite.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Health/DamageEventData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Health/HealthManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Health/IPlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Health/PlayerHealthHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Interfaces/IDash.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Interfaces/ILayerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Interfaces/IMoveCharacter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Interfaces/IMoveDirection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Interfaces/IPhotonService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Interfaces/IWeaponRotationManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/MeleeLogic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Mono/CoroutineRunner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Mono/RpcManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Movenmant/CharacterAnimatorRotation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Movenmant/MoveCharacter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/Net/NetworkRPCManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/PhotonService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/UI/PlayerName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Zenject/UI/StaminaView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Editor/BurstAotCompiler.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2WewajsW0t6dLDb1chcDh2i0y8g" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\asval\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\asval\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\asval\\AppData\\Local\\Symbols\\src&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Рабочий стол/Buildv1/Pixel Quest 2D.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\asval\OneDrive\Рабочий стол\Buildv1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.23f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;J:\Unity Folder\Pixel Quest\2D\Pixel-Quest-2D&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="J:\Unity Folder\Pixel Quest\2D\Pixel-Quest-2D" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7274eff-7874-4ba3-8545-9e0cca99ff95" name="Changes" comment="" />
+      <created>1697106420364</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697106420364</updated>
+      <workItem from="1697106421599" duration="15000" />
+      <workItem from="1697106638805" duration="13888000" />
+      <workItem from="1697138802913" duration="38000" />
+      <workItem from="1697138853562" duration="39000" />
+      <workItem from="1697141674875" duration="15000" />
+      <workItem from="1697141897964" duration="11000" />
+      <workItem from="1697145371224" duration="1786000" />
+      <workItem from="1697199087306" duration="21575000" />
+      <workItem from="1697277865750" duration="4779000" />
+      <workItem from="1697301317037" duration="9438000" />
+      <workItem from="1697314740864" duration="852000" />
+      <workItem from="1697393572092" duration="4594000" />
+      <workItem from="1697455404306" duration="13534000" />
+      <workItem from="1697482353419" duration="259000" />
+      <workItem from="1697488703532" duration="8722000" />
+      <workItem from="1697534995593" duration="4408000" />
+      <workItem from="1697548025834" duration="6561000" />
+      <workItem from="1697570757688" duration="1000" />
+      <workItem from="1697574457947" duration="4707000" />
+      <workItem from="1697629561745" duration="4429000" />
+      <workItem from="1697634141958" duration="101000" />
+      <workItem from="1697635644242" duration="5000000" />
+      <workItem from="1697648135561" duration="7826000" />
+      <workItem from="1697666341217" duration="2077000" />
+      <workItem from="1697713967016" duration="24160000" />
+      <workItem from="1697805886861" duration="23289000" />
+      <workItem from="1697894465039" duration="3639000" />
+      <workItem from="1697902943661" duration="759000" />
+      <workItem from="1697906126943" duration="13082000" />
+      <workItem from="1697969810754" duration="24236000" />
+      <workItem from="1698101465226" duration="921000" />
+      <workItem from="1698147499792" duration="10516000" />
+      <workItem from="1698164144445" duration="2440000" />
+      <workItem from="1698176879043" duration="2708000" />
+      <workItem from="1698192641666" duration="220000" />
+      <workItem from="1698237658274" duration="16211000" />
+      <workItem from="1698317549305" duration="4449000" />
+      <workItem from="1698333589888" duration="15900000" />
+      <workItem from="1698416908997" duration="19860000" />
+      <workItem from="1698452782679" duration="75000" />
+      <workItem from="1698491548231" duration="29260000" />
+      <workItem from="1698578834683" duration="967000" />
+      <workItem from="1698585434550" duration="29229000" />
+      <workItem from="1698657995525" duration="1645000" />
+      <workItem from="1698659968493" duration="7166000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
