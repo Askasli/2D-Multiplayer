@@ -38,7 +38,6 @@ namespace Common.Infrastructure
             Container.Bind<IGroundChecker>().To<GroundChecker>().AsSingle(); 
             Container.Bind<ILayerManager>().To<LayerManager>().AsSingle();
             Container.Bind<IPlayerHealth>().To<PlayerHealth>().AsSingle().WithArguments(maxHpt);
-            Container.Bind<PlayerHealthHandler>().AsSingle();
         }
     }
 }

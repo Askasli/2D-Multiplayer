@@ -10,9 +10,9 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
     private IStaminaManager _staminaManager;
     private IRotationEnable _rotationEnable;
 
-    private float HoldSpawnSparkl = 0.2f;
-    private float timeToEnableCollider = 0.1f;
-    private float diactivateCollider = 0.3f;
+    private const float TimeToEnableCollider = 0.1f;
+    private const float DeactivateCollider = 0.3f;
+    
     private bool swordBool = false;
     private bool enableToRotate;
 
@@ -24,7 +24,7 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
         _combatInput = combatInput;
         
         _rotationEnable = rotationEnable;
-        _rotationEnable.SetRotationValue(true); // Set rotation as true.
+        _rotationEnable.SetRotationValue(true);
     }
     
     public void AttackBySword(Animator anim,  Transform colliderTransform)
@@ -35,7 +35,7 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
         if (_combatInput.IsRightMouseButtonDown() &&  !swordBool && _staminaManager.CanSwordAttack()) 
         {
             CoroutineRunner.Instance.StartCoroutine(AnimatorOn()); // Start sword attack animation
-            _staminaManager.UseStamina(0.25f);  // Consume stamina for the attack
+            _staminaManager.UseStamina(0.25f);  // Using Stamina
             CoroutineRunner.Instance.StartCoroutine(ActivateObject(colliderTransform)); // Activate collider
         }
     }
@@ -49,16 +49,14 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
     
     IEnumerator ActivateObject(Transform colliderTransform)
     {
-        if (colliderTransform == null)
+        if (colliderTransform != null)
         {
-            yield break; 
+            _rotationEnable.SetRotationValue(false);
+            yield return new WaitForSeconds(TimeToEnableCollider);
+            colliderTransform.gameObject.SetActive(true);
+            yield return new WaitForSeconds(DeactivateCollider);
+            _rotationEnable.SetRotationValue(true);
+            colliderTransform.gameObject.SetActive(false);
         }
-
-        _rotationEnable.SetRotationValue(false);
-        yield return new WaitForSeconds(timeToEnableCollider);
-        colliderTransform.gameObject.SetActive(true);
-        yield return new WaitForSeconds(diactivateCollider);
-        _rotationEnable.SetRotationValue(true);
-        colliderTransform.gameObject.SetActive(false);
     }
 }
