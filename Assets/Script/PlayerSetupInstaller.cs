@@ -37,8 +37,7 @@ namespace Common.Infrastructure
             Container.Bind<IUltimateEnable>().To<UltimateEnable>().AsSingle(); 
             Container.Bind<IGroundChecker>().To<GroundChecker>().AsSingle(); 
             Container.Bind<ILayerManager>().To<LayerManager>().AsSingle();
-            Container.Bind<IPlayerHealth>().To<PlayerHealth>().AsSingle().WithArguments(maxHpt); 
-            Container.Bind<IPlayerCombat>().To<PlayerCombat>().AsSingle();
+            Container.Bind<IPlayerHealth>().To<PlayerHealth>().AsSingle().WithArguments(maxHpt);
             Container.Bind<PlayerHealthHandler>().AsSingle();
         }
     }
