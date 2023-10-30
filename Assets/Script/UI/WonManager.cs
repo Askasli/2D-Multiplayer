@@ -28,6 +28,6 @@ public class WonManager : MonoBehaviour
 
     public void ToMenu()
     {
-        RoomManager.instance.DisconnectPlayer();
+        RoomManager.instance.DisconnectPlayer(); //delete
     }
 }

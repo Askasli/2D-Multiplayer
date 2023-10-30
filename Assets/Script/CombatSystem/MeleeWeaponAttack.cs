@@ -47,7 +47,7 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
         swordBool = false;
     }
     
-    private IEnumerator ActivateObject(Transform colliderTransform)
+    IEnumerator ActivateObject(Transform colliderTransform)
     {
         if (colliderTransform == null)
         {

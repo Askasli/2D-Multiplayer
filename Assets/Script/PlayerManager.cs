@@ -38,14 +38,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     
     private const string PlayerTag = "Player";
     private const string EnemyTag = "Enemy";
-    private const string FirstFloorTag = "FirstFloor";
-    private const string SecondFloorTag = "SecondFloor";
-    private const string ThirdFloorTag = "ThirdFloor";
-    private const string Layer1 = "Layer 1";
-    private const string Layer2 = "Layer 2";
-    private const string Layer3 = "Layer 3";
     
-
     [Inject]
     public void Construct(ICharacterAnimatorRotation animatorRotation, IMoveCharacter moveCharacter, IDash dash, IMeleeWeaponAttack meleeWeaponAttack, 
         IWeaponRotationManager weaponRotation, IWeaponShootManager weaponShootManager, ILayerManager layerManager, IUltimateTimer ultimateTimer, IStaminaManager staminaManager)
@@ -73,11 +66,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (!pv.IsMine)
         { 
             rigi.isKinematic = true;
-            gameObject.tag = PlayerTag;
+            gameObject.tag = EnemyTag;
         }
         else
         {
-            gameObject.tag = EnemyTag;
+            gameObject.tag = PlayerTag;
         }
        
     }
@@ -119,7 +112,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             string layerName = GetLayerNameForCollision(collider.gameObject);
 
-            if (!string.IsNullOrEmpty(layerName)) //checking layer 
+            if (!string.IsNullOrEmpty(layerName)) 
             {
                 _layerManager.ChangeLayerName(playerSpriteRenderers, layerName);
                 _layerManager.ChangeLayer(gameObject, layerName);
@@ -131,19 +124,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private string GetLayerNameForCollision(GameObject collisionObject)
     {
         string layerName = null;
+        
+        if (collisionObject.CompareTag("FirstFloor"))
+        {
+            layerName = "Layer 1";
+        }
+        else if (collisionObject.CompareTag("SecondFloor"))
+        {
+            layerName = "Layer 2";
+        }
+        else if (collisionObject.CompareTag("ThirdFloor"))
+        {
+            layerName = "Layer 3";
+        }
 
-        if (collisionObject.CompareTag(FirstFloorTag))
-        {
-            layerName = Layer1;
-        }
-        else if (collisionObject.CompareTag(SecondFloorTag))
-        {
-            layerName = Layer2;
-        }
-        else if (collisionObject.CompareTag(ThirdFloorTag))
-        {
-            layerName = Layer3;
-        }
 
         return layerName;
     }
