@@ -296,9 +296,9 @@ MonoBehaviour:
   spawnShootPoint: {fileID: 6857794082050809974}
   bowTransform: {fileID: 5867183271524025301}
   swordTransform: {fileID: 3971532486930146368}
+  colliderTransform: {fileID: 4830835913765212943}
   anim_body: {fileID: 481002402115272890}
   anim_hands: {fileID: 8523622583700283442}
-  colliderTransform: {fileID: 4830835913765212943}
   collider: {fileID: 3620899439869991977}
 --- !u!70 &2737817450283262845
 CapsuleCollider2D:

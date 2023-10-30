@@ -14,7 +14,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private IMoveCharacter _moveCharacter;
     private ICharacterAnimatorRotation _animatorRotation;
     private ILayerManager _layerManager;
-    
+    private IUltimateTimer _ultimateTimer;
+    private IStaminaManager _staminaManager;
     
     [SerializeField] private  SpriteRenderer[] playerSpriteRenderers;
     [SerializeField] private GameObject[] dashFX;
@@ -26,11 +27,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private Transform spawnShootPoint;
     [SerializeField] private Transform bowTransform;
     [SerializeField] private Transform swordTransform;
+    [SerializeField] private Transform colliderTransform;
     
     [SerializeField] private Animator anim_body;
     [SerializeField] private Animator anim_hands;
-  
-    [SerializeField] private Transform colliderTransform;
+    
     [SerializeField] private new Collider2D collider;
 
     private PhotonView pv;
@@ -38,7 +39,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     [Inject]
     public void Construct(ICharacterAnimatorRotation animatorRotation, IMoveCharacter moveCharacter, IDash dash, IMeleeWeaponAttack meleeWeaponAttack, 
-        IWeaponRotationManager weaponRotation, IWeaponShootManager weaponShootManager, ILayerManager layerManager)
+        IWeaponRotationManager weaponRotation, IWeaponShootManager weaponShootManager, ILayerManager layerManager, IUltimateTimer ultimateTimer, IStaminaManager staminaManager)
     {
         _dash = dash;
         _animatorRotation = animatorRotation;
@@ -47,6 +48,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         _weaponRotation = weaponRotation;
         _weaponShootManager = weaponShootManager;
         _layerManager = layerManager;
+        _ultimateTimer = ultimateTimer;
+        _staminaManager = staminaManager;
     }
 
     private void Awake()
@@ -76,17 +79,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             return;
         }
-
-        _dash.FxEnable(dashFX);
-        _animatorRotation.MouseRotation(transform);
-        _animatorRotation.FlipManager(bodyLayer.transform);
-        _animatorRotation.BodyLayerRotation(anim_body, anim_hands);
+        
+        _ultimateTimer.UpdateTimer(); 
+        _staminaManager.UpdateStamina(); 
+        _dash.FxEnable(dashFX); //Dash enable/disable
+        _animatorRotation.MouseRotation(transform); 
+        _animatorRotation.FlipManager(bodyLayer.transform); 
+        _animatorRotation.BodyLayerRotation(anim_body, anim_hands); 
         _animatorRotation.HandLayerRotation(handLayer, rigi);
         _meleeWeaponAttack.AttackBySword(anim_body, colliderTransform);
-        _weaponRotation.WeaponRotation(swordTransform, bowTransform, transform);
-        _weaponShootManager.BowShoot(anim_body, anim_hands, arrowPrefab, spawnShootPoint, gameObject);
+        _weaponRotation.WeaponRotation(swordTransform, bowTransform, transform); 
+        _weaponShootManager.BowShoot(anim_body, anim_hands, arrowPrefab, spawnShootPoint, gameObject); 
         _weaponShootManager.UltimateBowShoot(anim_hands, ultimateArrowPrefab, spawnShootPoint, gameObject);
-
     }
 
     private void FixedUpdate()
@@ -96,18 +100,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
         
-        _moveCharacter.MoveBody(rigi, anim_body);
-        _dash.DashController(rigi, anim_body, collider);
+        _moveCharacter.MoveBody(rigi, anim_body); // Player Movement
+        _dash.DashController(rigi, anim_body, collider); 
     }
-
-  
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (pv.IsMine)
         {
             string layerName = GetLayerNameForCollision(collider.gameObject);
 
-            if (!string.IsNullOrEmpty(layerName))
+            if (!string.IsNullOrEmpty(layerName)) //checking layer 
             {
                 _layerManager.ChangeLayerName(playerSpriteRenderers, layerName);
                 _layerManager.ChangeLayer(gameObject, layerName);

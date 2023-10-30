@@ -43,20 +43,24 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
         _sprite = spriteTransform;
     }
 
-    public void MouseRotation(Transform playerPosition)
+    public void MouseRotation(Transform playerPosition) //Check the mouse position relative to the player.
     {
         _playerTransform = playerPosition;
         mousePos = _mousePosition.mousePosition(playerPosition);
         mousePos.Normalize();
     }
 
-    public void BodyLayerRotation(Animator body, Animator hand)
+    // Control the character's animations, including rotation and movement.
+    public void BodyLayerRotation(Animator body, Animator hand)  // Control the character's animations, rotation
     {
         _animatorManager.MoveHorizontal(body, horizontalDirection, 0.1f, timingAnimator);
         _animatorManager.MoveVertical(body, verticalDirection, 0.1f, timingAnimator);
         _handAnimator.RotationHand(hand, horizontalDirection, verticalDirection, 0.1f, 1f);
         
-        if (_combatInput.IsRightMouseButtonDown() || _combatInput.IsLeftMouseButtonDown() || _ultimateEnable.CanUltimate())
+        // During actions, attacks, shooting, and using ultimate, 
+        // the player will look in the direction of the mouse.
+        
+        if (_combatInput.IsRightMouseButtonDown() || _combatInput.IsLeftMouseButtonDown() || _ultimateEnable.CanUltimate()) 
         {
             verticalDirection = mousePos.y;
             horizontalDirection = mousePos.x;
@@ -69,6 +73,7 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
                 movement = new Vector3(_inputManager.GetTurnInput(), 0f, _inputManager.GetForwardInput());
                 timingAnimator = Time.deltaTime;
                
+                
                 if (movement.magnitude > 0)
                 {
                     verticalDirection = Vector3.Dot(movement.normalized, _playerTransform.forward);
@@ -90,9 +95,9 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
         }
     }
     
-    public void HandLayerRotation(GameObject handLayer, Rigidbody2D rigidbody)
+    // Control hand animations and shooting.
+    public void HandLayerRotation(GameObject handLayer, Rigidbody2D rigidbody) 
     {
-       
         if (_combatInput.IsLeftMouseButtonDown() || _ultimateEnable.CanUltimate()) 
         {
             CoroutineRunner.Instance.StartCoroutine(ActivateShootLayer(0.1f, true, handLayer));
@@ -122,13 +127,14 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
             Debug.Log("stop shoot");
         }
     }
-
+   // Timer after an attack.
     IEnumerator TimerAfterAttack()
     {
         yield return new WaitForSeconds(0.4f);
         timeAfterAttack = 0;
     }
     
+    // Activate/Deactivate the shooting layer.
     IEnumerator ActivateShootLayer(float timeToActivate, bool activateBool, GameObject gameObject)
     {
         yield return new WaitForSeconds(timeToActivate);
@@ -137,6 +143,7 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
             gameObject.SetActive(activateBool);
     }
     
+    // Control the animation layer.
     IEnumerator LayerController(GameObject gameObject, float angle)
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();

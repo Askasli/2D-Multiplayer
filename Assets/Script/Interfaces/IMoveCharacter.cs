@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IMoveCharacter
 {
-    void MoveBody(Rigidbody2D rigidbody2D, Animator animator);
+    void MoveBody(Rigidbody2D rigidbody2D, Animator animator); 
 }

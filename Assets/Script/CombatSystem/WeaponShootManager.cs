@@ -32,14 +32,12 @@ public class WeaponShootManager : IWeaponShootManager
         _ultimateEnable = ultimateEnable;
     }
 
-
+    // Handle shooting with a bow.
     public void BowShoot(Animator bodyAnimator, Animator handAnimator, GameObject bullet, Transform spawnPoint,
         GameObject player)
     {
         _animatorManager.ShootAnimation(bodyAnimator, shootArrowBool);
-        _ultimateTimer.UpdateTimer();
-        _staminaManager.UpdateStamina();
-
+    
         if (_combatInput.IsLeftMouseButtonDown())
         {
             if (time <= 0)
@@ -60,6 +58,7 @@ public class WeaponShootManager : IWeaponShootManager
         time -= 1 * Time.deltaTime;
     }
 
+    //Spawn arrows.
     IEnumerator ArrowSpawn(GameObject bulletPrefab, Transform spawnPoint, GameObject player)
     {  
         shootArrowBool = true;
@@ -74,7 +73,7 @@ public class WeaponShootManager : IWeaponShootManager
         }
     }
 
-   
+    // Handle shooting with an ultimate
     public void UltimateBowShoot(Animator handAnimator, GameObject bullet, Transform spawnPoint, GameObject player)
     {
         _animatorManager.UltimateShootAnimation(handAnimator, _ultimateEnable.CanUltimate());
@@ -106,6 +105,7 @@ public class WeaponShootManager : IWeaponShootManager
         }
     }
 
+    // Spawn ultimate arrows.
     IEnumerator UltimateShoot(GameObject bulletPrefab, Transform spawnPoint, GameObject player)
     {
         if (spawnShoot != 1)

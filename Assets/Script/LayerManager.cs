@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class LayerManager : ILayerManager
 {
+    // Change the layer of a GameObject and its children
     public void ChangeLayer(GameObject gameObject, string layerName)
     {
         gameObject.layer = LayerMask.NameToLayer(layerName);
         ChangeLayerInChildren(gameObject.transform, layerName);
     }
 
+    // Change the sorting layer name of SpriteRenderers 
     public void ChangeLayerName(SpriteRenderer[] layer, string layerName)
     {
         if (layer != null)
@@ -32,6 +34,7 @@ public class LayerManager : ILayerManager
         }
     }
     
+    // Change the sorting layer name of TrailRenderers
     public void TrailLayerName(GameObject[] gameObjects, string layerName)
     {
         if (gameObjects != null)

@@ -36,17 +36,17 @@ public class Dash : IDash
 
     public void DashController(Rigidbody2D rigi, Animator animator, Collider2D collider2D)
     {
-        _animatorManager.DashAnimation(animator, dashBool);
+        _animatorManager.DashAnimation(animator, dashBool); //Dash animator 
 
-        if (_combatInput.IsDashButtonDown() && _staminaManager.CanDash())
+        if (_combatInput.IsDashButtonDown() && _staminaManager.CanDash()) //Dash activation
         {
-            if (_moveDirection.moveDirection().magnitude > 0)
+            if (_moveDirection.moveDirection().magnitude > 0) 
             {
                 dashForce = true;
-                CoroutineRunner.Instance.StartCoroutine(DashFxOn());
-                CoroutineRunner.Instance.StartCoroutine(DashForce(rigi));
-                CoroutineRunner.Instance.StartCoroutine(DashAnimatorEnable());
-                CoroutineRunner.Instance.StartCoroutine(DashColliderEnable(collider2D));
+                CoroutineRunner.Instance.StartCoroutine(DashFxOn()); //Enable the trail renderer.
+                CoroutineRunner.Instance.StartCoroutine(DashForce(rigi)); //Rigidbody force to make a dash.
+                CoroutineRunner.Instance.StartCoroutine(DashAnimatorEnable());  //Enable the animation.
+                CoroutineRunner.Instance.StartCoroutine(DashColliderEnable(collider2D)); //Disable the collider to pass through walls
             }
         }
     }

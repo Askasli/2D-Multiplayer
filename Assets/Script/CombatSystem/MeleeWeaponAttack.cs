@@ -24,18 +24,19 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
         _combatInput = combatInput;
         
         _rotationEnable = rotationEnable;
-        _rotationEnable.SetRotationValue(true);
+        _rotationEnable.SetRotationValue(true); // Set rotation as true.
     }
     
     public void AttackBySword(Animator anim,  Transform colliderTransform)
     {
         _animatorManager.SwordAttackAnimation(anim, swordBool);
         
+        // Check if you can attack by sword
         if (_combatInput.IsRightMouseButtonDown() &&  !swordBool && _staminaManager.CanSwordAttack()) 
         {
-            CoroutineRunner.Instance.StartCoroutine(AnimatorOn());
-            _staminaManager.UseStamina(0.25f);
-            CoroutineRunner.Instance.StartCoroutine(ActivateObject(colliderTransform));
+            CoroutineRunner.Instance.StartCoroutine(AnimatorOn()); // Start sword attack animation
+            _staminaManager.UseStamina(0.25f);  // Consume stamina for the attack
+            CoroutineRunner.Instance.StartCoroutine(ActivateObject(colliderTransform)); // Activate collider
         }
     }
     

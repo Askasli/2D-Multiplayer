@@ -17,7 +17,7 @@ public class MoveCharacter : IMoveCharacter
         _moveDirection = moveDirection;
     }
     
-    public void MoveBody(Rigidbody2D rigi, Animator animator)
+    public void MoveBody(Rigidbody2D rigi, Animator animator) // Player Movement
     {
         rigi.velocity = _moveDirection.moveDirection() * speed;
         magnitude = _moveDirection.moveDirection().magnitude;

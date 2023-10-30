@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
     [SerializeField] private Transform[] spawnPoints;
     [Inject] private DiContainer container;
     
-    public void SpawnPlayer()
+    public void SpawnPlayer() 
     {
         int playerId = -1;
 
