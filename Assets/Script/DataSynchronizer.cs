@@ -5,8 +5,6 @@ using Photon.Pun;
 public class DataSynchronizer : MonoBehaviourPun
 {
     private int synchronizedValue;
-
-    // Событие, которое будет вызываться, когда данные обновляются
     public event System.Action<int> OnSynchronizedValueUpdated;
 
     private void Start()
@@ -31,8 +29,7 @@ public class DataSynchronizer : MonoBehaviourPun
         synchronizedValue = newValue;
         OnSynchronizedValueUpdated?.Invoke(synchronizedValue);
     }
-
-    // Метод для изменения значения и отправки его по сети
+    
     public void ModifySynchronizedValue(int amount)
     {
         if (photonView.IsMine)

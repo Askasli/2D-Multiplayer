@@ -9,13 +9,10 @@
 
         public float MaxStamina { get; }
         public float StaminaRegenRate { get; }
-
-        // Properties for different stamina costs
         public float DashStaminaCost { get; }
         public float ShootStaminaCost { get; }
         public float SwordStaminaCost { get; }
-
-        // Current stamina field
+        
         private float currentStamina = 1f;
 
         public StaminaManager(float maxStamina, float staminaRegenRate)
@@ -23,7 +20,7 @@
             MaxStamina = maxStamina;
             StaminaRegenRate = staminaRegenRate;
             
-            // Initialize stamina costs
+            // Stamina costs
             DashStaminaCost = 0.2f;
             ShootStaminaCost = 0.1f;
             SwordStaminaCost = 0.25f;

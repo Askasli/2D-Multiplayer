@@ -20,7 +20,6 @@ namespace Common.Infrastructure
             Container.Bind<PhotonView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IUltimateTimer>().To<UltimateTimer>().AsSingle(); 
             Container.Bind<IMousePosition>().To<MousePosition>().AsSingle();    
-            Container.Bind<ICombatSystem>().To<CombatSystem>().AsSingle(); //delete
             Container.Bind<ICombatInput>().To<CombatInput>().AsSingle();
             Container.Bind<IAnimatorManager>().To<AnimatorManager>().AsSingle();
             Container.Bind<IHandAnimator>().To<HandAnimator>().AsSingle();

@@ -36,9 +36,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         pv = GetComponent<PhotonView>();
 
     }
-   
-
-    // Update is called once per frame
     void Update()
     {
         currentPlayersInGame = PhotonNetwork.PlayerList.Length;
@@ -69,21 +66,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
-
-
-        /*
-        PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("K", out object kills);
-        PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("D", out object death);
-
-        if (kills != null && death != null)
-        {
-            scoresHeader.text = "K: " + ((int)kills).ToString("000") + " D:" + ((int)death).ToString("000");
-        }
-        */
     }
-
-
-
 
 
     public void Disconnect()

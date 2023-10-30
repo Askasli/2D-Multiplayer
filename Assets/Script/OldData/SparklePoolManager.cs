@@ -8,8 +8,7 @@ public class SparklePoolManager : MonoBehaviourPun
     public int poolSize = 20;
 
     private Queue<GameObject> pooledSparkles = new Queue<GameObject>();
-
-    // Photon Singleton pattern
+    
     public static SparklePoolManager Instance { get; private set; }
 
     private void Awake()
@@ -25,7 +24,6 @@ public class SparklePoolManager : MonoBehaviourPun
 
         if (PhotonNetwork.IsMasterClient)
         {
-            // Instantiate the initial pool of sparkles on the master client
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject sparkle = PhotonNetwork.InstantiateSceneObject(sparklePrefab.name, Vector3.zero, Quaternion.identity);

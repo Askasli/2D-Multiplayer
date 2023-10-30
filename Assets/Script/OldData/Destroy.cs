@@ -11,12 +11,7 @@ public class Destroy : MonoBehaviour
     {
         DestroyObj();
     }
-    // Update is called once per frame
-    void Update()
-    {
-    //    Destroy(gameObject, timeToDelete);
-    }
-
+    
     [PunRPC]
     public void DestroyObj()
     {
