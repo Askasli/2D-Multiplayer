@@ -8,9 +8,4 @@ public class HandAnimator : IHandAnimator
         anim.SetFloat("Forward", vertical, dampTime, timing);
         anim.SetFloat("Turn", horizontal, dampTime, timing);
     }
-
-    public void UltimateShootHand(Animator anim, bool ultimateShootBool)
-    {
-        anim.SetBool("UltimateShooting", ultimateShootBool);
-    }
 }

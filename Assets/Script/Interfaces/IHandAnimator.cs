@@ -5,6 +5,4 @@ using UnityEngine;
 public interface IHandAnimator
 {
      void RotationHand(Animator anim, float horizontal, float vertical, float dampTime, float timing);
-     void UltimateShootHand(Animator anim, bool ultimateShootBool);
-
 }
