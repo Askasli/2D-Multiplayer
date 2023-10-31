@@ -18,7 +18,6 @@ public class WeaponShootManager : IWeaponShootManager
     
     private bool shootArrowBool;
     private float time;
-    private float timeCoolDown = 0.66f;
     private int spawnShoot;
   
     
@@ -33,8 +32,7 @@ public class WeaponShootManager : IWeaponShootManager
     }
 
     // Handle shooting with a bow.
-    public void BowShoot(Animator bodyAnimator, Animator handAnimator, GameObject bullet, Transform spawnPoint,
-        GameObject player)
+    public void BowShoot(Animator bodyAnimator, GameObject bullet, Transform spawnPoint, GameObject player)
     {
         _animatorManager.ShootAnimation(bodyAnimator, shootArrowBool);
     
@@ -77,10 +75,8 @@ public class WeaponShootManager : IWeaponShootManager
     public void UltimateBowShoot(Animator handAnimator, GameObject bullet, Transform spawnPoint, GameObject player)
     {
         _animatorManager.UltimateShootAnimation(handAnimator, _ultimateEnable.CanUltimate());
-      
-     
         AnimatorStateInfo stateInfo = handAnimator.GetCurrentAnimatorStateInfo(0);
-        Debug.Log(_ultimateTimer.GetTimeRemaining() + " время на ульт");
+        
         
         if (_combatInput.IsUltimateButtonDown() && _ultimateTimer.IsUltimateReady())
         {

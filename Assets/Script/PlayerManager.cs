@@ -84,19 +84,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
         
-        _ultimateTimer.UpdateTimer(); 
-        _staminaManager.UpdateStamina(); 
-        _dash.FxEnable(dashFX); //Dash enable/disable
+        HandlePlayerActions();
         
-       
-        _animatorRotation.MouseRotation(transform); 
-        _animatorRotation.FlipManager(bodyLayer.transform); 
-        _animatorRotation.BodyLayerRotation(anim_body, anim_hands); 
-        _animatorRotation.HandLayerRotation(handLayer, rigi);
-        _meleeWeaponAttack.AttackBySword(anim_body, colliderTransform);
-        _weaponRotation.WeaponRotation(swordTransform, bowTransform, transform); 
-        _weaponShootManager.BowShoot(anim_body, anim_hands, arrowPrefab, spawnShootPoint, gameObject); 
-        _weaponShootManager.UltimateBowShoot(anim_hands, ultimateArrowPrefab, spawnShootPoint, gameObject);
     }
 
     private void FixedUpdate()
@@ -105,14 +94,35 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             return;
         }
-        
+
+        HandlePlayerMovement();
+    }
+    
+    
+    private void HandlePlayerActions()
+    {
+        _dash.FxEnable(dashFX); // Dash enable/disable
+        _ultimateTimer.UpdateTimer(); 
+        _staminaManager.UpdateStamina();
+        _animatorRotation.MouseRotation(transform); 
+        _animatorRotation.FlipManager(bodyLayer.transform); 
+        _animatorRotation.BodyLayerRotation(anim_body, anim_hands); 
+        _animatorRotation.HandLayerRotation(handLayer, rigi);
+        _meleeWeaponAttack.AttackBySword(anim_body, colliderTransform);
+        _weaponRotation.WeaponRotation(swordTransform, bowTransform, transform); 
+        _weaponShootManager.BowShoot(anim_body, arrowPrefab, spawnShootPoint, gameObject); 
+        _weaponShootManager.UltimateBowShoot(anim_hands, ultimateArrowPrefab, spawnShootPoint, gameObject);
+    }
+
+    private void HandlePlayerMovement()
+    {
         _moveCharacter.MoveBody(rigi, anim_body); // Player Movement
         _dash.DashController(rigi, anim_body, collider); 
     }
     
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        
         if (pv.IsMine)
         {
             if (_groundChecker.CanCheckGround())

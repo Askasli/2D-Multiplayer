@@ -10,7 +10,6 @@ public class SwordCollider : MonoBehaviourPunCallbacks
     public string sender;
     private PhotonView pv;
     public bool openHit = false;
-    private float timeToDisableHit;
 
     private void Start()
     {
@@ -40,7 +39,6 @@ public class SwordCollider : MonoBehaviourPunCallbacks
         if (collision.gameObject.CompareTag("Enemy") && !openHit)
         {
             openHit = true;
-            timeToDisableHit = 1;
             Debug.Log("Player hit");
 
             HealthManager health = collision.gameObject.GetComponent<HealthManager>();
