@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private ILayerManager _layerManager;
     private IUltimateTimer _ultimateTimer;
     private IStaminaManager _staminaManager;
+    private IGroundChecker _groundChecker;
     
     [SerializeField] private  SpriteRenderer[] playerSpriteRenderers;
     [SerializeField] private GameObject[] dashFX;
@@ -41,7 +42,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     
     [Inject]
     public void Construct(ICharacterAnimatorRotation animatorRotation, IMoveCharacter moveCharacter, IDash dash, IMeleeWeaponAttack meleeWeaponAttack, 
-        IWeaponRotationManager weaponRotation, IWeaponShootManager weaponShootManager, ILayerManager layerManager, IUltimateTimer ultimateTimer, IStaminaManager staminaManager)
+        IWeaponRotationManager weaponRotation, IWeaponShootManager weaponShootManager, ILayerManager layerManager, IUltimateTimer ultimateTimer, IStaminaManager staminaManager, IGroundChecker groundChecker)
     {
         _dash = dash;
         _animatorRotation = animatorRotation;
@@ -52,6 +53,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         _layerManager = layerManager;
         _ultimateTimer = ultimateTimer;
         _staminaManager = staminaManager;
+        _groundChecker = groundChecker;
     }
 
     private void Awake()
@@ -108,23 +110,28 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        
         if (pv.IsMine)
         {
-            string layerName = GetLayerNameForCollision(collider.gameObject);
-
-            if (!string.IsNullOrEmpty(layerName)) 
+            if (_groundChecker.CanCheckGround())
             {
-                _layerManager.ChangeLayerName(playerSpriteRenderers, layerName);
-                _layerManager.ChangeLayer(gameObject, layerName);
-                _layerManager.TrailLayerName(dashFX, layerName);
+                string layerName = GetLayerNameForCollision(collider.gameObject);
+
+                if (!string.IsNullOrEmpty(layerName))
+                {
+                    _layerManager.ChangeLayerName(playerSpriteRenderers, layerName);
+                    _layerManager.ChangeLayer(gameObject, layerName);
+                    _layerManager.TrailLayerName(dashFX, layerName);
+                }
             }
         }
+        
     }
     
     private string GetLayerNameForCollision(GameObject collisionObject)
     {
         string layerName = null;
-        
+
         if (collisionObject.CompareTag("FirstFloor"))
         {
             layerName = "Layer 1";
@@ -151,6 +158,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(handLayer.GetComponent<SpriteRenderer>().sortingLayerName);
             stream.SendNext(handLayer.activeSelf); // Send the activation status
             stream.SendNext(colliderTransform.gameObject.activeSelf);
+            stream.SendNext(gameObject.layer);
 
             for (int i = 0; i < dashFX.Length; i++)
             {
@@ -171,7 +179,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             handLayer.GetComponent<SpriteRenderer>().sortingLayerName = sortingLayerName;
             handLayer.SetActive((bool)stream.ReceiveNext());
             colliderTransform.gameObject.SetActive((bool)stream.ReceiveNext());
-
+            gameObject.layer = (int)stream.ReceiveNext();
+            
             for (int i = 0; i < dashFX.Length; i++)
             {
                 dashFX[i].gameObject.SetActive((bool)stream.ReceiveNext());
