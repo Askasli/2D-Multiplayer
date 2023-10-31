@@ -8,10 +8,8 @@ using Zenject;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-
-    public PhotonView pv;
     public static RoomManager instance;
-    [SerializeField] private int playersInRoom;
+  //  [SerializeField] private int playersInRoom;
 
     private void Start()
     {
@@ -53,8 +51,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         base.OnPlayerLeftRoom(otherPlayer);
         Debug.Log(otherPlayer.NickName + "Has left the game");
-        playersInRoom--;
-        Debug.Log(playersInRoom + " amount of players in room");
+    //    playersInRoom--;
+     //   Debug.Log(playersInRoom + " amount of players in room");
 
     }
 }

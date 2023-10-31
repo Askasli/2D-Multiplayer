@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text playersText;
     [SerializeField] private int currentPlayersInGame;
     
-    PhotonView pv;
-    [Inject] private PlayerSpawner playerSpawner;
+    [Inject] 
+    private PlayerSpawner playerSpawner;
     
 
     private void Awake()
@@ -29,9 +29,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             SceneManager.LoadScene("Menu");
             return;
         }
-
-        pv = GetComponent<PhotonView>();
-
+        
     }
 
     private void Start()
@@ -50,7 +48,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         currentPlayersInGame = PhotonNetwork.PlayerList.Length;
         playersText.SetText(currentPlayersInGame.ToString("0"));
 
-        if (pv.IsMine)
+        if (photonView.IsMine)
         {
             if (currentPlayersInGame <= 1)
             {
