@@ -63,7 +63,7 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
         if (zoneBool)
         {
             if (photonView.IsMine)
-                _playerHealth.UseHealth(1);
+                _playerHealth.UseHealth(Time.deltaTime * 3f);
         }
     }
     
@@ -72,8 +72,6 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
     {
         if (!_photonView.IsMine)
             return;
-        
-        Debug.Log("were hit");
         
         _playerHealth.UseHealth(dmg);
       
