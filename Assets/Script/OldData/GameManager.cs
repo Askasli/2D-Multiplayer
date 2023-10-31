@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -14,14 +15,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_Text playersText;
     [SerializeField] private int currentPlayersInGame;
-    [SerializeField] private Transform pauseMenu;
-    private bool pause;
-
-
+    
     PhotonView pv;
     [Inject] private PlayerSpawner playerSpawner;
-
-
+    
 
     private void Awake()
     {
@@ -36,10 +33,21 @@ public class GameManager : MonoBehaviourPunCallbacks
         pv = GetComponent<PhotonView>();
 
     }
+
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+    }
+
     void Update()
     {
         currentPlayersInGame = PhotonNetwork.PlayerList.Length;
-
         playersText.SetText(currentPlayersInGame.ToString("0"));
 
         if (pv.IsMine)
@@ -50,21 +58,6 @@ public class GameManager : MonoBehaviourPunCallbacks
                 // wonMenu.SetActive(true);
                 //  playersText.gameObject.SetActive(false);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pause = !pause;
-            pauseMenu.gameObject.SetActive(pause);
-        }
-
-        Application.targetFrameRate = 60;
-
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
         }
     }
 
