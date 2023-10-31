@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215db7f3f799505499ee262d021e9eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuName: Room
+  menuName: 2
   open: 0
 --- !u!114 &874244502
 MonoBehaviour:
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215db7f3f799505499ee262d021e9eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuName: Error
+  menuName: 4
   open: 0
 --- !u!1 &1080392658
 GameObject:
@@ -2546,7 +2546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215db7f3f799505499ee262d021e9eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuName: Find Lobby
+  menuName: 3
   open: 0
 --- !u!224 &1112159643
 RectTransform:
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51b4d8bc778e1e4e96ea8ce920c4e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu:
+  menus:
   - {fileID: 2085998757}
   - {fileID: 1309952450}
   - {fileID: 874244501}
@@ -2891,10 +2891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0a7bdcce85f5b47ad28013e3ba3299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNameInputField: {fileID: 0}
   errorText: {fileID: 802286932}
   roomNameText: {fileID: 2061967336}
-  playerCounter: {fileID: 0}
   PlayeristContent: {fileID: 1631988198}
   roomListContent: {fileID: 1466249967}
   roomListItemPrefab: {fileID: 1569306847845510288, guid: ff1d2ed7360d3eb44be1a7168b2f1ec1, type: 3}
@@ -3384,7 +3382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215db7f3f799505499ee262d021e9eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuName: Title
+  menuName: 1
   open: 0
 --- !u!224 &1342637683 stripped
 RectTransform:
@@ -4972,7 +4970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215db7f3f799505499ee262d021e9eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuName: Loading
+  menuName: 0
   open: 1
 --- !u!1001 &183061702553295479
 PrefabInstance:

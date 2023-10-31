@@ -225,7 +225,7 @@ public class PhotonRoomController : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("You have left a Photon Room");
-        MenuManager.instance.OpenMenu("Title");
+        MenuManager.instance.OpenMenu(MenuName.TitleMenu);
 
 
         _selectedGameMode = null;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] Menu[] menu;
+    [SerializeField] Menu[] menus;
     public static MenuManager instance { get; set; }
 
     private void Awake()
@@ -12,34 +12,34 @@ public class MenuManager : MonoBehaviour
         instance = this;
     }
 
-    public void OpenMenu(string menuName)
+    public void OpenMenu(MenuName menuName)
     {
-        for (int i = 0; i < menu.Length; i++)
+        for (int i = 0; i < menus.Length; i++)
         {
-            if(menu[i].MenuName == menuName)
+            if (menus[i].menuName == menuName)
             {
-                menu[i].Open();
+                menus[i].Open();
             }
-            else if(menu[i].open)
+            else if (menus[i].open)
             {
-                CloseMenu(menu[i]);
+                CloseMenu(menus[i]);
             }
         }
-    }    
+    }
 
     public void OpenMenu(Menu m_menu)
     {
-        for (int i = 0; i < menu.Length; i++)
+        for (int i = 0; i < menus.Length; i++)
         {
-            if(menu[i].open)
+            if (menus[i].open)
             {
-                CloseMenu(menu[i]);
+                CloseMenu(menus[i]);
             }
         }
 
         m_menu.Open();
     }
-    
+
     public void CloseMenu(Menu m_menu)
     {
         m_menu.Close();

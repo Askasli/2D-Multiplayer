@@ -11,12 +11,10 @@ public class Launcher : MonoBehaviourPunCallbacks
 {
     public static Launcher instance;
     private bool lobbyNameGenerated = false;
-
-    [SerializeField] TMP_InputField roomNameInputField;
+    
     [SerializeField] TMP_Text errorText;
     [SerializeField] TMP_Text roomNameText;
-    [SerializeField] TMP_Text playerCounter;
-
+    
     [SerializeField] Transform PlayeristContent;
     [SerializeField] Transform roomListContent;
     
@@ -49,12 +47,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        MenuManager.instance.OpenMenu("Title");
+        MenuManager.instance.OpenMenu(MenuName.TitleMenu);
+    
         Debug.Log("Joined Lobby");
         PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
     }
 
 
+    /*
     public void CreateRoom()
     {
         if (string.IsNullOrEmpty(roomNameInputField.text))
@@ -63,10 +63,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
 
         PhotonNetwork.CreateRoom(roomNameInputField.text);
-        MenuManager.instance.OpenMenu("Loading");
-
+        MenuManager.instance.OpenMenu(MenuName.Loading);
     }
-
+    */
+    
+    
     public override void OnJoinedRoom()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -78,7 +79,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             RetrieveLobbyName();
         }
 
-        MenuManager.instance.OpenMenu("Room");
+        MenuManager.instance.OpenMenu(MenuName.Room);
         int playerId = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         ExitGames.Client.Photon.Hashtable customProps = new ExitGames.Client.Photon.Hashtable();
         customProps["PlayerId"] = playerId;
@@ -98,9 +99,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         StartGameButton.SetActive(PhotonNetwork.IsMasterClient);
     }
-
-
-
+    
     private void RetrieveLobbyName()
     {
         if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue(LobbyNameKey, out object lobbyNameObj))
@@ -119,33 +118,31 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        MenuManager.instance.OpenMenu("Error");
+        MenuManager.instance.OpenMenu(MenuName.ErrorMenu);
         errorText.text = "Room Creation Failed " + message;
     }
 
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        MenuManager.instance.OpenMenu("Loading");
     }
 
     public override void OnLeftRoom()
     {
-        MenuManager.instance.OpenMenu("Title");
+        MenuManager.instance.OpenMenu(MenuName.TitleMenu);
     }
 
 
     public void JoinRoom(RoomInfo info)
     {
         PhotonNetwork.JoinRoom(info.Name);
-        MenuManager.instance.OpenMenu("Loading");
+        MenuManager.instance.OpenMenu(MenuName.Loading);
     }
 
     
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        //base.OnRoomListUpdate(roomList);
         foreach (Transform trans in roomListContent)
         {
             Destroy(trans.gameObject);
