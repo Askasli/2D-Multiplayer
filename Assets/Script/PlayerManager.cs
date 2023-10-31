@@ -87,6 +87,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         _ultimateTimer.UpdateTimer(); 
         _staminaManager.UpdateStamina(); 
         _dash.FxEnable(dashFX); //Dash enable/disable
+        
+       
         _animatorRotation.MouseRotation(transform); 
         _animatorRotation.FlipManager(bodyLayer.transform); 
         _animatorRotation.BodyLayerRotation(anim_body, anim_hands); 
@@ -115,7 +117,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (_groundChecker.CanCheckGround())
             {
-                string layerName = GetLayerNameForCollision(collider.gameObject);
+                string layerName = _layerManager.GetLayerNameForCollision(collider.gameObject);
 
                 if (!string.IsNullOrEmpty(layerName))
                 {
@@ -125,30 +127,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 }
             }
         }
-        
     }
-    
-    private string GetLayerNameForCollision(GameObject collisionObject)
-    {
-        string layerName = null;
 
-        if (collisionObject.CompareTag("FirstFloor"))
-        {
-            layerName = "Layer 1";
-        }
-        else if (collisionObject.CompareTag("SecondFloor"))
-        {
-            layerName = "Layer 2";
-        }
-        else if (collisionObject.CompareTag("ThirdFloor"))
-        {
-            layerName = "Layer 3";
-        }
-
-
-        return layerName;
-    }
-    
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)

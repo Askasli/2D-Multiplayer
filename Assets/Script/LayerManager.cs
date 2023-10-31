@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class LayerManager : ILayerManager
 {
+    public const string FirstFloor = "FirstFloor";
+    public const string SecondFloor = "SecondFloor";
+    public const string ThirdFloor = "ThirdFloor";
+    
+    
     // Change the layer of a GameObject and its children
     public void ChangeLayer(GameObject gameObject, string layerName)
     {
@@ -44,5 +49,27 @@ public class LayerManager : ILayerManager
                 gameObjects[i].GetComponent<TrailRenderer>().sortingLayerName = layerName;
             }
         }
+    }
+
+    public string GetLayerNameForCollision(GameObject collisionObject)
+    {
+        string layerName = null;
+
+        
+        if (collisionObject.CompareTag(LayerTags.FirstFloor))
+        {
+            layerName = "Layer 1";
+        }
+        else if (collisionObject.CompareTag(LayerTags.SecondFloor))
+        {
+            layerName =  "Layer 2";
+        }
+        else if (collisionObject.CompareTag(LayerTags.ThirdFloor))
+        {
+            layerName =  "Layer 3";
+        }
+        
+
+        return layerName;
     }
 }

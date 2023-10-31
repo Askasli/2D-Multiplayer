@@ -4,9 +4,10 @@ using UnityEngine;
 
 public interface ILayerManager
 {
-    void ChangeLayer(GameObject gameObject, string layerName); //аыфафафа
+    void ChangeLayer(GameObject gameObject, string layerName); 
 
     void ChangeLayerName(SpriteRenderer[] layer, string layerName);
 
     void TrailLayerName(GameObject[] gameObjects, string layerName);
+    string GetLayerNameForCollision(GameObject collisionObject);
 }
