@@ -7,8 +7,6 @@ using UnityEngine;
 public class ArrowCollisionHandler : MonoBehaviourPun
 { 
     [SerializeField] private GameObject hitrefab;
-   
-
     [SerializeField] private float damage;
     [SerializeField] private string sender;
     [SerializeField] private bool isUltimate = false;
