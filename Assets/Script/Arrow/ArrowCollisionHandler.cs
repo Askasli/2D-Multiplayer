@@ -71,19 +71,6 @@ public class ArrowCollisionHandler : MonoBehaviourPun
     {
         StartCoroutine(HitArrow());
         photonView.RPC("HitClient", RpcTarget.Others);
-
-        if (isUltimate)
-        {
-            /*
-            HealthManager[] healthManagers = FindObjectsOfType<HealthManager>();
-            
-            foreach (var healthManager in healthManagers)
-            {
-                healthManager.photonView.RPC("CamShaking", RpcTarget.AllBuffered, sender);
-            }
-            */
-            Debug.Log("ult hit");
-        }
     }
 
     private IEnumerator HitArrow()

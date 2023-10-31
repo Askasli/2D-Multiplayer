@@ -16,7 +16,6 @@ public class WeaponRotationManager : IWeaponRotationManager
         _rotationEnable = rotationEnable;
     }
     
-
     public void WeaponRotation(Transform swordTransform, Transform bowTransform, Transform playerTransform)
     {
         mousePos = _mousePosition.mousePosition(playerTransform);  // Rotate the weapon based on mouse position.

@@ -104,10 +104,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         _dash.FxEnable(dashFX); // Dash enable/disable
         _ultimateTimer.UpdateTimer(); 
         _staminaManager.UpdateStamina();
+        
         _animatorRotation.MouseRotation(transform); 
         _animatorRotation.FlipManager(bodyLayer.transform); 
         _animatorRotation.BodyLayerRotation(anim_body, anim_hands); 
         _animatorRotation.HandLayerRotation(handLayer, rigi);
+        
         _meleeWeaponAttack.AttackBySword(anim_body, colliderTransform);
         _weaponRotation.WeaponRotation(swordTransform, bowTransform, transform); 
         _weaponShootManager.BowShoot(anim_body, arrowPrefab, spawnShootPoint, gameObject); 

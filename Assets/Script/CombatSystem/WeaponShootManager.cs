@@ -6,16 +6,16 @@ using Zenject;
 
 public class WeaponShootManager : IWeaponShootManager
 {
-    private const float ArrowSpawnDelay = 0.4f;
-    private const float ShootCooldown = 0.66f;
-    private const float StaminaCostPerShot = 0.1f;
-    
     private ICombatInput _combatInput;
     private IUltimateTimer _ultimateTimer;
     private IStaminaManager _staminaManager;
     private IAnimatorManager _animatorManager;
     private IUltimateEnable _ultimateEnable;
     
+    private const float ArrowSpawnDelay = 0.4f;
+    private const float ShootCooldown = 0.66f;
+    private const float StaminaCostPerShot = 0.1f;
+
     private bool shootArrowBool;
     private float time;
     private int spawnShoot;
@@ -76,7 +76,6 @@ public class WeaponShootManager : IWeaponShootManager
     {
         _animatorManager.UltimateShootAnimation(handAnimator, _ultimateEnable.CanUltimate());
         AnimatorStateInfo stateInfo = handAnimator.GetCurrentAnimatorStateInfo(0);
-        
         
         if (_combatInput.IsUltimateButtonDown() && _ultimateTimer.IsUltimateReady())
         {
