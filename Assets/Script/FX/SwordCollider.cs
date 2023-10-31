@@ -48,7 +48,6 @@ public class SwordCollider : MonoBehaviourPunCallbacks
             if (health != null)
             {
                 health.photonView.RPC("TakeDamage", RpcTarget.AllBuffered, damageAmount, photonView.Owner.NickName);
-                health.photonView.RPC("Damagable", RpcTarget.AllBuffered);
                 Debug.Log(sender + " sender");
             }
 
