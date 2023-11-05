@@ -65,9 +65,8 @@ public class WeaponShootManager : IWeaponShootManager
         if (shootArrowBool)
         { 
             _staminaManager.UseStamina(StaminaCostPerShot);
-            GameObject arrow = PhotonNetwork.Instantiate(bulletPrefab.name, spawnPoint.position, spawnPoint.rotation);
+            GameObject arrow = PhotonNetwork.Instantiate(bulletPrefab.name, spawnPoint.position, spawnPoint.rotation); //Later i'll add MemoryPool, temporary solution
             arrow.layer = player.layer;
-            
         }
     }
 

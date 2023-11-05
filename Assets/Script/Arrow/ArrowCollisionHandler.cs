@@ -76,6 +76,7 @@ public class ArrowCollisionHandler : MonoBehaviourPun
     private IEnumerator HitArrow()
     {
         GameObject explosionObject = PhotonNetwork.Instantiate(hitrefab.name, transform.position, transform.rotation);
+    //   explosionObject.layer = gameObject.layer;
 
         if (explosionObject != null)
         {
