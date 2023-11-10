@@ -46,7 +46,6 @@ public class PlayerHealth : IPlayerHealth
 
     public void RestoreHealth(float amount)
     {
-        
         if (!isAlive) return; 
 
         currentHealth += amount;

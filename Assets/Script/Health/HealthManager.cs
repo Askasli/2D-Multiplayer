@@ -11,17 +11,20 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
 {
     private IPlayerHealth _playerHealth;
     private PhotonView _photonView;
-    private bool allowedTakeDamage;
-    private float currentHealth;
-    private bool checkSpawn = false;
-    private bool zoneBool;
-    
+
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform hpBar;
     [SerializeField] private GameObject deadBody;
     [SerializeField] private CameraControl camSetup;
     
+    private const float ZoneDamageMultiplier = 3f;
+    private const float FlashDuration = 0.05f;
     
+    private float currentHealth;
+    private bool allowedTakeDamage;
+    private bool checkSpawn = false;
+    private bool zoneBool;
+
     [Inject]
     public void Construct(IPlayerHealth playerHealth)
     {
@@ -43,8 +46,8 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
 
     private void Update()
     {
-        hpBar.gameObject.GetComponent<Slider>().value = currentHealth;
-
+        UpdateHealthBar();
+        
         if (_photonView.IsMine)
         {
             currentHealth = _playerHealth.GetCurrentHealth();
@@ -58,15 +61,19 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
         }
     }
     
+    private void UpdateHealthBar()
+    {
+        hpBar.gameObject.GetComponent<Slider>().value = currentHealth;
+    }
+
     private void DamageInZone()
     {
-        if (zoneBool)
+        if (zoneBool && photonView.IsMine)
         {
-            if (photonView.IsMine)
-                _playerHealth.UseHealth(Time.deltaTime * 3f);
+            _playerHealth.UseHealth(Time.deltaTime * ZoneDamageMultiplier);
         }
     }
-    
+
     [PunRPC]
     public void TakeDamage(float dmg, string sender)
     {
@@ -86,7 +93,7 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
     private IEnumerator SpriteFlash()
     {
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(FlashDuration);
         spriteRenderer.color = Color.white;
     }
 
@@ -114,8 +121,7 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
             }
         }
     }
-
-
+    
     private IEnumerator PlayerDefeat()
     {
         yield return new WaitForSeconds(0.02f);
@@ -125,17 +131,19 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
 
     private void OnTriggerStay2D(Collider2D collider2d)
     {
-        if (collider2d.gameObject.CompareTag("Zone"))
-        {
-            zoneBool = false;
-        }
+        UpdateZoneState(collider2d, false);
     }
 
     private void OnTriggerExit2D(Collider2D collider2d)
     {
+        UpdateZoneState(collider2d, true);
+    }
+    
+    private void UpdateZoneState(Collider2D collider2d, bool isExit)
+    {
         if (collider2d.gameObject.CompareTag("Zone"))
         {
-            zoneBool = true;
+            zoneBool = isExit;
         }
     }
     
