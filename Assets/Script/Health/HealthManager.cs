@@ -74,6 +74,17 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
         }
     }
 
+    private void HandlePlayerDeath()
+    {
+        _photonView.RPC("Defeat", RpcTarget.All);
+       
+        if (checkSpawn)
+        {
+            StartCoroutine(PlayerDefeat());
+        }
+    }
+
+    
     [PunRPC]
     public void TakeDamage(float dmg, string sender)
     {
@@ -96,17 +107,7 @@ public class HealthManager : MonoBehaviourPun, IPunObservable
         yield return new WaitForSeconds(FlashDuration);
         spriteRenderer.color = Color.white;
     }
-
-    private void HandlePlayerDeath()
-    {
-        _photonView.RPC("Defeat", RpcTarget.All);
-       
-        if (checkSpawn)
-        {
-            StartCoroutine(PlayerDefeat());
-        }
-    }
-
+    
     [PunRPC]
     private void Defeat()
     {

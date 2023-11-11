@@ -15,7 +15,9 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
     
     private float verticalDirection;
     private float horizontalDirection;
-    private float timeAfterAttack;
+    
+    private bool afterAttackEnable = false;
+    
     private float bowRot_z;
     private float timingAnimator;
     
@@ -64,26 +66,29 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
         {
             verticalDirection = mousePos.y;
             horizontalDirection = mousePos.x;
-            timeAfterAttack = 1;
+            afterAttackEnable = true;
         }
         else
         { 
-            if(timeAfterAttack == 0)
+            if(!afterAttackEnable)
             {
+                // Get movement input from the input manager
                 movement = new Vector3(_inputManager.GetTurnInput(), 0f, _inputManager.GetForwardInput());
                 timingAnimator = Time.deltaTime;
                
                 
                 if (movement.magnitude > 0)
                 {
+                    // Calculate vertical and horizontal directions based on movement
                     verticalDirection = Vector3.Dot(movement.normalized, _playerTransform.forward);
                     horizontalDirection = Vector3.Dot(movement.normalized, _playerTransform.right);
 
+                    // Normalize movement and scale it by 1 * Time.deltaTime
                     movement.Normalize();
                     movement *= 1 * Time.deltaTime;
                 }
             }
-            else if(timeAfterAttack == 1)
+            else
             {
                 CoroutineRunner.Instance.StartCoroutine(TimerAfterAttack());
             }
@@ -95,23 +100,28 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
         }
     }
     
-    // Control hand animations and shooting.
+    // Control hand animations.
     public void HandLayerRotation(GameObject handLayer, Rigidbody2D rigidbody) 
     {
         if (_combatInput.IsLeftMouseButtonDown() || _ultimateEnable.CanUltimate()) 
         {
+            // Activate shooting layer with a short delay
             CoroutineRunner.Instance.StartCoroutine(ActivateShootLayer(0.1f, true, handLayer));
             
+            // Check if the vertical direction is within a certain range
             if (verticalDirection < 0.71f && verticalDirection > -0.71f)
             {
+                // Calculate the rotation angle based on the mouse position
                 bowRot_z = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
                 handLayer.transform.rotation = Quaternion.Euler(0f, 0f, bowRot_z);
             }
             else
             {
+                // Set a default rotation 
                 handLayer.transform.rotation = Quaternion.Euler(0f, 0f, 0);
             }
 
+            // Check the magnitude of the rigidbody's velocity to determine layer activation
             if (rigidbody.velocity.magnitude > 0) // activation hands layer
             {
                 CoroutineRunner.Instance.StartCoroutine(LayerController(handLayer, 0.39f));
@@ -127,11 +137,12 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
             Debug.Log("stop shoot");
         }
     }
+    
    // Timer after an attack.
     IEnumerator TimerAfterAttack()
     {
         yield return new WaitForSeconds(0.4f);
-        timeAfterAttack = 0;
+        afterAttackEnable = false;
     }
     
     // Activate/Deactivate the shooting layer.
