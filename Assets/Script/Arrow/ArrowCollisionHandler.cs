@@ -37,7 +37,7 @@ public class ArrowCollisionHandler : MonoBehaviourPun
         {
             HandleEnemyCollision(collision);
         }
-        else if (collision.CompareTag(SwordTag))
+        else if (collision.CompareTag(SwordTag)) 
         {
             HandleSwordCollision();
         }
@@ -56,21 +56,18 @@ public class ArrowCollisionHandler : MonoBehaviourPun
             enemyHealth.photonView.RPC("TakeDamage", RpcTarget.All, damage, sender);
         }
 
-        photonView.RPC("HitClient", RpcTarget.Others);
         StartCoroutine(HitArrow());
-        Debug.Log("Player hit");
+        PhotonNetwork.Destroy(gameObject);
     }
 
     private void HandleSwordCollision()
     {
         StartCoroutine(HitArrow());
-        photonView.RPC("HitClient", RpcTarget.Others);
     }
 
     private void HandleObstacleCollision()
     {
         StartCoroutine(HitArrow());
-        photonView.RPC("HitClient", RpcTarget.Others);
     }
 
     private IEnumerator HitArrow()
@@ -85,13 +82,6 @@ public class ArrowCollisionHandler : MonoBehaviourPun
 
         Destroy(gameObject);
 
-        yield return null;
-    }
-
-    [PunRPC]
-    private IEnumerator HitClient()
-    {
-        Destroy(gameObject);
         yield return null;
     }
 }
