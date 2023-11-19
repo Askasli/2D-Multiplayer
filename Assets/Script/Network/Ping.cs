@@ -6,6 +6,7 @@ using TMPro;
 public class Ping : MonoBehaviour
 {
     private TMP_Text pingText;
+    
     void Start()
     {
         pingText = GetComponent<TMP_Text>();
