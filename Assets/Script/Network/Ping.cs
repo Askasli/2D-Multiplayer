@@ -12,7 +12,7 @@ public class Ping : MonoBehaviour
         pingText = GetComponent<TMP_Text>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         int ping = PhotonNetwork.GetPing();
         pingText.text = "Ping: " + ping + "ms";
