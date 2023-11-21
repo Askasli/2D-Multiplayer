@@ -23,7 +23,7 @@ namespace Common.Infrastructure
             Container.Bind<ICombatInput>().To<CombatInput>().AsSingle();
             Container.Bind<IAnimatorManager>().To<AnimatorManager>().AsSingle();
             Container.Bind<IHandAnimator>().To<HandAnimator>().AsSingle();
-            Container.Bind<IInputManager>().To<InputManager>().AsSingle();   
+            Container.Bind<IMoveInput>().To<MoveInput>().AsSingle();   
             Container.Bind<IFlipSprite >().To<FlipSprite>().AsSingle();
             Container.Bind<IMeleeWeaponAttack >().To<MeleeWeaponAttack>().AsSingle();  
             Container.Bind<IStaminaManager >().To<StaminaManager>().AsSingle().WithArguments(maxStamina, staminaRegenRate);

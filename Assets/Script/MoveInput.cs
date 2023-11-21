@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class InputManager : IInputManager
+public class MoveInput : IMoveInput
 {
     public float GetForwardInput()
     {

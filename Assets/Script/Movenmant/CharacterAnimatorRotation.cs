@@ -10,7 +10,7 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
     private IFlipSprite _flipSprite;
     private IHandAnimator _handAnimator;
     private IMousePosition _mousePosition;
-    private IInputManager _inputManager;
+    private IMoveInput _moveInput;
     private IUltimateEnable _ultimateEnable;
     
     private float verticalDirection;
@@ -29,14 +29,14 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
     
     
     [Inject]
-    private void Construct(IAnimatorManager animatorManager, ICombatInput combatInput, IFlipSprite flipSprite, IHandAnimator handAnimator, IMousePosition mousePosition, IInputManager inputManager, IUltimateEnable ultimateEnable)
+    private void Construct(IAnimatorManager animatorManager, ICombatInput combatInput, IFlipSprite flipSprite, IHandAnimator handAnimator, IMousePosition mousePosition, IMoveInput moveInput, IUltimateEnable ultimateEnable)
     {
         _animatorManager = animatorManager;
         _combatInput = combatInput;
         _flipSprite = flipSprite;
         _handAnimator = handAnimator;
         _mousePosition = mousePosition;
-        _inputManager = inputManager;
+        _moveInput = moveInput;
         _ultimateEnable = ultimateEnable;
     }
     
@@ -73,7 +73,7 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
             if(!afterAttackEnable)
             {
                 // Get movement input from the input manager
-                movement = new Vector3(_inputManager.GetTurnInput(), 0f, _inputManager.GetForwardInput());
+                movement = new Vector3(_moveInput.GetTurnInput(), 0f, _moveInput.GetForwardInput());
                 timingAnimator = Time.deltaTime;
                
                 
