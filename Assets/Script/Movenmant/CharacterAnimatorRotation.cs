@@ -163,16 +163,13 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
 
         if (verticalDirection > angle)
         {
-            sortingLayerName = "Far";
             sortingOrder = 2;
         }
         else
         {
-            sortingLayerName = "MuchCloser";
             sortingOrder = 3;
         }
 
-        spriteRenderer.sortingLayerName = sortingLayerName;
         spriteRenderer.sortingOrder = sortingOrder;
 
         yield return null;
