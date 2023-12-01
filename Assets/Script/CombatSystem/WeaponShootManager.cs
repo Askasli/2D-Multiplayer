@@ -65,7 +65,8 @@ public class WeaponShootManager : IWeaponShootManager
         if (shootArrowBool)
         { 
             _staminaManager.UseStamina(StaminaCostPerShot);
-            GameObject arrow = PhotonNetwork.Instantiate(bulletPrefab.name, spawnPoint.position, spawnPoint.rotation); //Later i'll add MemoryPool, temporary solution
+            //  Later, I want to create an object pool using Zenject's IMemoryPool. For now, a temporary solution.
+            GameObject arrow = PhotonNetwork.Instantiate(bulletPrefab.name, spawnPoint.position, spawnPoint.rotation); 
             arrow.layer = player.layer;
         }
     }
