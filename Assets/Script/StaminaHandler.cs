@@ -3,7 +3,7 @@
     using UnityEngine;
 
 
-    public class StaminaManager : IStaminaManager
+    public class StaminaHandler : IStaminaHandler
     {
         public event Action<float> OnStaminaUpdated;
 
@@ -15,7 +15,7 @@
         
         private float currentStamina = 1f;
 
-        public StaminaManager(float maxStamina, float staminaRegenRate)
+        public StaminaHandler(float maxStamina, float staminaRegenRate)
         {
             MaxStamina = maxStamina;
             StaminaRegenRate = staminaRegenRate;

@@ -7,13 +7,13 @@ using Zenject;
 public class ArrowVisual : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] private SpriteRenderer[] arrowSpriteRenderers;
-    private ILayerManager _layerManager;
+    private ICharacterLayerHandler _layer;
     private string layerName; 
 
     [Inject]
-    public void Construct(ILayerManager layerManager)
+    public void Construct(ICharacterLayerHandler layer)
     {
-        _layerManager = layerManager;
+        _layer = layer;
     }
 
     private void Start()

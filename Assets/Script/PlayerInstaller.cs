@@ -13,7 +13,7 @@ namespace Common.Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<PlayerSpawner>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<PlayerManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CharacterLogicHandler>().FromComponentInHierarchy().AsSingle();
         }
 
     }

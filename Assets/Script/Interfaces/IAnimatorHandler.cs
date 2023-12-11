@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IAnimatorManager
+public interface IAnimatorHandler
 {
     void MoveHorizontal(Animator anim, float horizontal, float dumpTime, float timings);
     void MoveVertical(Animator anim, float vertical, float dumpTime, float timings);

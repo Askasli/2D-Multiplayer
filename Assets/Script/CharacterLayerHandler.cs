@@ -4,7 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 
 
-public class LayerManager : ILayerManager
+public class CharacterLayerHandler : ICharacterLayerHandler
 {
     public const string FirstFloor = "FirstFloor";
     public const string SecondFloor = "SecondFloor";

@@ -5,9 +5,9 @@ using Zenject;
 
 public class MeleeWeaponAttack : IMeleeWeaponAttack
 {
-    private IAnimatorManager _animatorManager;
+    private IAnimatorHandler _animator;
     private ICombatInput _combatInput;
-    private IStaminaManager _staminaManager;
+    private IStaminaHandler _staminaHandler;
     private IRotationEnable _rotationEnable;
 
     private const float TimeToEnableCollider = 0.1f;
@@ -17,10 +17,10 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
     private bool enableToRotate;
 
     [Inject]
-    public void Construct(IAnimatorManager animatorManager, IStaminaManager staminaManager, ICombatInput combatInput, IRotationEnable rotationEnable)
+    public void Construct(IAnimatorHandler animator, IStaminaHandler staminaHandler, ICombatInput combatInput, IRotationEnable rotationEnable)
     {
-        _animatorManager = animatorManager;
-        _staminaManager = staminaManager;
+        _animator = animator;
+        _staminaHandler = staminaHandler;
         _combatInput = combatInput;
         
         _rotationEnable = rotationEnable;
@@ -29,13 +29,13 @@ public class MeleeWeaponAttack : IMeleeWeaponAttack
     
     public void AttackBySword(Animator anim,  Transform colliderTransform)
     {
-        _animatorManager.SwordAttackAnimation(anim, swordBool);
+        _animator.SwordAttackAnimation(anim, swordBool);
         
         // Check if you can attack by sword
-        if (_combatInput.IsRightMouseButtonDown() &&  !swordBool && _staminaManager.CanSwordAttack()) 
+        if (_combatInput.IsRightMouseButtonDown() &&  !swordBool && _staminaHandler.CanSwordAttack()) 
         {
             CoroutineRunner.Instance.StartCoroutine(AnimatorOn()); // Start sword attack animation
-            _staminaManager.UseStamina(0.25f);  // Using Stamina
+            _staminaHandler.UseStamina(0.25f);  // Using Stamina
             CoroutineRunner.Instance.StartCoroutine(ActivateObject(colliderTransform)); // Activate collider
         }
     }

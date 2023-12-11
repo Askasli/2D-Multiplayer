@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class WeaponRotationManager : IWeaponRotationManager
+public class WeaponRotationHandler : IWeaponRotationHandler
 {
     private IMousePosition _mousePosition;
     private IRotationEnable _rotationEnable;

@@ -5,9 +5,9 @@ using Zenject;
 
 public class Dash : IDash
 {
-    private IAnimatorManager _animatorManager;
+    private IAnimatorHandler _animator;
     private ICombatInput _combatInput;
-    private IStaminaManager _staminaManager;
+    private IStaminaHandler _staminaHandler;
     private IMoveDirection _moveDirection;
     private IGroundChecker _groundChecker;
     
@@ -17,11 +17,11 @@ public class Dash : IDash
     private Vector3 moveDir;
     
     [Inject]
-    private void Construct(IAnimatorManager animatorManager, ICombatInput combatInput,  IStaminaManager staminaManager, IMoveDirection moveDirection, IGroundChecker groundChecker)
+    private void Construct(IAnimatorHandler animator, ICombatInput combatInput,  IStaminaHandler staminaHandler, IMoveDirection moveDirection, IGroundChecker groundChecker)
     {
-        _animatorManager = animatorManager;
+        _animator = animator;
         _combatInput = combatInput;
-        _staminaManager = staminaManager;
+        _staminaHandler = staminaHandler;
         _moveDirection = moveDirection;
         _groundChecker = groundChecker;
     }
@@ -36,9 +36,9 @@ public class Dash : IDash
 
     public void DashController(Rigidbody2D rigi, Animator animator, Collider2D collider2D)
     {
-        _animatorManager.DashAnimation(animator, dashBool); //Dash animator 
+        _animator.DashAnimation(animator, dashBool); //Dash animator 
 
-        if (_combatInput.IsDashButtonDown() && _staminaManager.CanDash()) //Dash activation
+        if (_combatInput.IsDashButtonDown() && _staminaHandler.CanDash()) //Dash activation
         {
             if (_moveDirection.moveDirection().magnitude > 0) 
             {
@@ -67,7 +67,7 @@ public class Dash : IDash
 
     IEnumerator DashForce(Rigidbody2D rigidbody2D)
     {
-        _staminaManager.UseStamina(0.2f);
+        _staminaHandler.UseStamina(0.2f);
         
         if (dashForce)
         {

@@ -5,7 +5,7 @@ using Zenject;
 
 public class CharacterAnimatorRotation : ICharacterAnimatorRotation
 {
-    private IAnimatorManager _animatorManager;
+    private IAnimatorHandler _animator;
     private ICombatInput _combatInput;
     private IFlipSprite _flipSprite;
     private IHandAnimator _handAnimator;
@@ -29,9 +29,9 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
     
     
     [Inject]
-    private void Construct(IAnimatorManager animatorManager, ICombatInput combatInput, IFlipSprite flipSprite, IHandAnimator handAnimator, IMousePosition mousePosition, IMoveInput moveInput, IUltimateEnable ultimateEnable)
+    private void Construct(IAnimatorHandler animator, ICombatInput combatInput, IFlipSprite flipSprite, IHandAnimator handAnimator, IMousePosition mousePosition, IMoveInput moveInput, IUltimateEnable ultimateEnable)
     {
-        _animatorManager = animatorManager;
+        _animator = animator;
         _combatInput = combatInput;
         _flipSprite = flipSprite;
         _handAnimator = handAnimator;
@@ -55,8 +55,8 @@ public class CharacterAnimatorRotation : ICharacterAnimatorRotation
     // Control the character's animations, including rotation and movement.
     public void BodyLayerRotation(Animator body, Animator hand)  // Control the character's animations, rotation
     {
-        _animatorManager.MoveHorizontal(body, horizontalDirection, 0.1f, timingAnimator);
-        _animatorManager.MoveVertical(body, verticalDirection, 0.1f, timingAnimator);
+        _animator.MoveHorizontal(body, horizontalDirection, 0.1f, timingAnimator);
+        _animator.MoveVertical(body, verticalDirection, 0.1f, timingAnimator);
         _handAnimator.RotationHand(hand, horizontalDirection, verticalDirection, 0.1f, 1f);
         
         // During actions, attacks, shooting, and using ultimate, 

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using Zenject;
 
 // Temporary solution
-public class HealthManager : MonoBehaviourPun, IPunObservable
+public class HealthPlayerHandler : MonoBehaviourPun, IPunObservable
 {
     private IPlayerHealth _playerHealth;
     private PhotonView _photonView;

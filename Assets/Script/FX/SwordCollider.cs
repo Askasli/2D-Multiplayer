@@ -41,7 +41,7 @@ public class SwordCollider : MonoBehaviourPunCallbacks
             openHit = true;
             Debug.Log("Player hit");
 
-            HealthManager health = collision.gameObject.GetComponent<HealthManager>();
+            HealthPlayerHandler health = collision.gameObject.GetComponent<HealthPlayerHandler>();
 
             if (health != null)
             {

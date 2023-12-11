@@ -5,20 +5,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
+public class CharacterLogicHandler : MonoBehaviourPunCallbacks, IPunObservable
 {
     private IDash _dash;
     private IMeleeWeaponAttack _meleeWeaponAttack;
-    private IWeaponRotationManager _weaponRotation;
-    private IWeaponShootManager _weaponShootManager;
+    private IWeaponRotationHandler _weaponRotation;
+    private IWeaponShootHandler _weaponShoot;
     private IMoveCharacter _moveCharacter;
     private ICharacterAnimatorRotation _animatorRotation;
-    private ILayerManager _layerManager;
+    private ICharacterLayerHandler _layerHandler;
     private IUltimateTimer _ultimateTimer;
-    private IStaminaManager _staminaManager;
+    private IStaminaHandler _staminaHandler;
     private IGroundChecker _groundChecker;
     
-    [SerializeField] private  SpriteRenderer[] playerSpriteRenderers;
+    [SerializeField] private SpriteRenderer[] playerSpriteRenderers;
     [SerializeField] private GameObject[] dashFX;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private GameObject ultimateArrowPrefab;
@@ -42,17 +42,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     
     [Inject]
     public void Construct(ICharacterAnimatorRotation animatorRotation, IMoveCharacter moveCharacter, IDash dash, IMeleeWeaponAttack meleeWeaponAttack, 
-        IWeaponRotationManager weaponRotation, IWeaponShootManager weaponShootManager, ILayerManager layerManager, IUltimateTimer ultimateTimer, IStaminaManager staminaManager, IGroundChecker groundChecker)
+        IWeaponRotationHandler weaponRotation, IWeaponShootHandler weaponShoot, ICharacterLayerHandler layerHandler, IUltimateTimer ultimateTimer, IStaminaHandler staminaHandler, IGroundChecker groundChecker)
     {
         _dash = dash;
         _animatorRotation = animatorRotation;
         _moveCharacter = moveCharacter;
         _meleeWeaponAttack = meleeWeaponAttack;
         _weaponRotation = weaponRotation;
-        _weaponShootManager = weaponShootManager;
-        _layerManager = layerManager;
+        _weaponShoot = weaponShoot;
+        _layerHandler = layerHandler;
         _ultimateTimer = ultimateTimer;
-        _staminaManager = staminaManager;
+        _staminaHandler= staminaHandler;
         _groundChecker = groundChecker;
     }
 
@@ -103,7 +103,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         _dash.FxEnable(dashFX); // Dash enable/disable
         _ultimateTimer.UpdateTimer(); 
-        _staminaManager.UpdateStamina();
+        _staminaHandler.UpdateStamina();
         
         _animatorRotation.MouseRotation(transform); 
         _animatorRotation.FlipManager(bodyLayer.transform); 
@@ -112,8 +112,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         
         _meleeWeaponAttack.AttackBySword(anim_body, colliderTransform);
         _weaponRotation.WeaponRotation(swordTransform, bowTransform, transform); 
-        _weaponShootManager.BowShoot(anim_body, arrowPrefab, spawnShootPoint, gameObject); 
-        _weaponShootManager.UltimateBowShoot(anim_hands, ultimateArrowPrefab, spawnShootPoint, gameObject);
+        _weaponShoot.BowShoot(anim_body, arrowPrefab, spawnShootPoint, gameObject); 
+        _weaponShoot.UltimateBowShoot(anim_hands, ultimateArrowPrefab, spawnShootPoint, gameObject);
     }
 
     private void HandlePlayerMovement()
@@ -129,13 +129,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (_groundChecker.CanCheckGround())
             {
-                string layerName = _layerManager.GetLayerNameForCollision(collider.gameObject);
+                string layerName = _layerHandler.GetLayerNameForCollision(collider.gameObject);
 
                 if (!string.IsNullOrEmpty(layerName))
                 {
-                    _layerManager.ChangeLayerName(playerSpriteRenderers, layerName);
-                    _layerManager.ChangeLayer(gameObject, layerName);
-                    _layerManager.TrailLayerName(dashFX, layerName);
+                    _layerHandler.ChangeLayerName(playerSpriteRenderers, layerName);
+                    _layerHandler.ChangeLayer(gameObject, layerName);
+                    _layerHandler.TrailLayerName(dashFX, layerName);
                 }
             }
         }

@@ -4,12 +4,12 @@ using Photon.Pun;
 using UnityEngine;
 using Zenject;
 
-public class WeaponShootManager : IWeaponShootManager
+public class WeaponShootHandler : IWeaponShootHandler
 {
     private ICombatInput _combatInput;
     private IUltimateTimer _ultimateTimer;
-    private IStaminaManager _staminaManager;
-    private IAnimatorManager _animatorManager;
+    private IStaminaHandler _staminaHandler;
+    private IAnimatorHandler _animator;
     private IUltimateEnable _ultimateEnable;
     
     private const float ArrowSpawnDelay = 0.4f;
@@ -22,25 +22,25 @@ public class WeaponShootManager : IWeaponShootManager
   
     
     [Inject]
-    public void Construct(ICombatInput combatInput, IUltimateTimer ultimateTimer, IStaminaManager staminaManager, IAnimatorManager animatorManager, IUltimateEnable ultimateEnable)
+    public void Construct(ICombatInput combatInput, IUltimateTimer ultimateTimer, IStaminaHandler staminaHandler, IAnimatorHandler animator, IUltimateEnable ultimateEnable)
     {
         _combatInput = combatInput;
         _ultimateTimer = ultimateTimer;
-        _staminaManager = staminaManager;
-        _animatorManager = animatorManager;
+        _staminaHandler = staminaHandler;
+        _animator = animator;
         _ultimateEnable = ultimateEnable;
     }
 
     // Handle shooting with a bow.
     public void BowShoot(Animator bodyAnimator, GameObject bullet, Transform spawnPoint, GameObject player)
     {
-        _animatorManager.ShootAnimation(bodyAnimator, shootArrowBool);
+        _animator.ShootAnimation(bodyAnimator, shootArrowBool);
     
         if (_combatInput.IsLeftMouseButtonDown())
         {
             if (time <= 0)
             {
-                if (_staminaManager.CanShoot() && !_ultimateEnable.CanUltimate())
+                if (_staminaHandler.CanShoot() && !_ultimateEnable.CanUltimate())
                 {
                     CoroutineRunner.Instance.StartCoroutine(ArrowSpawn(bullet, spawnPoint, player));
                 }
@@ -64,7 +64,7 @@ public class WeaponShootManager : IWeaponShootManager
 
         if (shootArrowBool)
         { 
-            _staminaManager.UseStamina(StaminaCostPerShot);
+            _staminaHandler.UseStamina(StaminaCostPerShot);
             //  Later, I want to create an object pool using Zenject's IMemoryPool. For now, a temporary solution.
             GameObject arrow = PhotonNetwork.Instantiate(bulletPrefab.name, spawnPoint.position, spawnPoint.rotation); 
             arrow.layer = player.layer;
@@ -74,7 +74,7 @@ public class WeaponShootManager : IWeaponShootManager
     // Handle shooting with an ultimate
     public void UltimateBowShoot(Animator handAnimator, GameObject bullet, Transform spawnPoint, GameObject player)
     {
-        _animatorManager.UltimateShootAnimation(handAnimator, _ultimateEnable.CanUltimate());
+        _animator.UltimateShootAnimation(handAnimator, _ultimateEnable.CanUltimate());
         AnimatorStateInfo stateInfo = handAnimator.GetCurrentAnimatorStateInfo(0);
         
         if (_combatInput.IsUltimateButtonDown() && _ultimateTimer.IsUltimateReady())

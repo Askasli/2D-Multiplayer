@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class AnimatorManager : IAnimatorManager
+public class AnimatorHandler : IAnimatorHandler
 {
     public void MoveHorizontal(Animator anim, float horizontal, float dumpTime, float timings)
     {

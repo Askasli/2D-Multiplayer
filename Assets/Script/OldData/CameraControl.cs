@@ -7,7 +7,7 @@ public class CameraControl : MonoBehaviour
 {
     PhotonView pv;
 
-    public PlayerManager playerLocal;
+    public CharacterLogicHandler playerLocal;
     public float speed;
     public float floatShake;
     private Vector3 rotationAmount;
@@ -55,7 +55,7 @@ public class CameraControl : MonoBehaviour
     {
         if (playerLocal == null)
         {
-            playerLocal = GetComponentInParent<PlayerManager>();
+            playerLocal = GetComponentInParent<CharacterLogicHandler>();
 
             if (playerLocal == null) 
             { 

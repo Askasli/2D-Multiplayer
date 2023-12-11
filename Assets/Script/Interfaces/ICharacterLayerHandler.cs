@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILayerManager
+public interface ICharacterLayerHandler
 {
     void ChangeLayer(GameObject gameObject, string layerName); 
 

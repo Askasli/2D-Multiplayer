@@ -49,7 +49,7 @@ public class ArrowCollisionHandler : MonoBehaviourPun
 
     private void HandleEnemyCollision(Collider2D collision)
     {
-        HealthManager enemyHealth = collision.GetComponent<HealthManager>();
+        HealthPlayerHandler enemyHealth = collision.GetComponent<HealthPlayerHandler>();
 
         if (enemyHealth != null)
         {

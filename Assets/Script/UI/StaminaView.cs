@@ -8,23 +8,23 @@ using Zenject;
 
 public class StaminaView : MonoBehaviourPun
 {
-   private IStaminaManager _staminaManager;
+   private IStaminaHandler _staminaHandler;
    [SerializeField]private Slider staminaSlider;
 
    [Inject]
-   public void Construct(IStaminaManager staminaManager)
+   public void Construct(IStaminaHandler staminaManager)
    {
-      _staminaManager = staminaManager;
+      _staminaHandler = staminaManager;
    }
 
    private void Start()
    {
-      _staminaManager.OnStaminaUpdated += UpdateStamina; 
+      _staminaHandler.OnStaminaUpdated += UpdateStamina; 
    }
    
    private void OnDestroy()
    {
-      _staminaManager.OnStaminaUpdated -= UpdateStamina;
+      _staminaHandler.OnStaminaUpdated -= UpdateStamina;
    }
    
    private void UpdateStamina(float value)

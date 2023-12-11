@@ -1,7 +1,7 @@
 ﻿
     using System;
 
-    public interface IStaminaManager
+    public interface IStaminaHandler
     {
         event Action<float> OnStaminaUpdated;
         void UseStamina(float amount);

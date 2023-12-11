@@ -7,13 +7,13 @@ public class MoveCharacter : IMoveCharacter
 {
     private float speed = 4f;
     private float magnitude;
-    private IAnimatorManager _animatorManager;
+    private IAnimatorHandler _animator;
     private IMoveDirection _moveDirection;
 
     [Inject]
-    private void Construct(IAnimatorManager animatorManager,  IMoveDirection moveDirection)
+    private void Construct(IAnimatorHandler animator,  IMoveDirection moveDirection)
     {
-        _animatorManager = animatorManager;
+        _animator = animator;
         _moveDirection = moveDirection;
     }
     
@@ -22,6 +22,6 @@ public class MoveCharacter : IMoveCharacter
         rigi.velocity = _moveDirection.moveDirection() * speed;
         magnitude = _moveDirection.moveDirection().magnitude;
         
-        _animatorManager.MoveAnimation(animator, magnitude > 0);
+        _animator.MoveAnimation(animator, magnitude > 0);
     }
 }
