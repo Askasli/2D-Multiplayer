@@ -61,12 +61,13 @@ public class CharacterLogicHandler : MonoBehaviourPunCallbacks, IPunObservable
         pv = GetComponent<PhotonView>();
         rigi = GetComponent<Rigidbody2D>();
         colliderTransform.gameObject.SetActive(false);
+        InitializeTags();
     }
 
-    private void Start()
+    private void InitializeTags()
     {
         if (!pv.IsMine)
-        { 
+        {
             rigi.isKinematic = true;
             gameObject.tag = EnemyTag;
         }
@@ -74,9 +75,8 @@ public class CharacterLogicHandler : MonoBehaviourPunCallbacks, IPunObservable
         {
             gameObject.tag = PlayerTag;
         }
-       
     }
-
+    
     private void Update()
     {
         if (!pv.IsMine)
@@ -90,11 +90,6 @@ public class CharacterLogicHandler : MonoBehaviourPunCallbacks, IPunObservable
 
     private void FixedUpdate()
     {
-        if (!pv.IsMine)
-        {
-            return;
-        }
-
         HandlePlayerMovement();
     }
     
